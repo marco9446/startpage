@@ -152,6 +152,115 @@ header {
   opacity: 1;
 }
 
+.todo-section {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  padding: 1.5rem;
+  margin-bottom: 4rem;
+  box-shadow: var(--shadow);
+}
+
+.todo-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  border-left: 4px solid var(--accent-color);
+  background: var(--bg-color);
+}
+
+.todo-item:has(.todo-checkbox:checked) {
+  order: 1;
+  border-left-color: var(--border-color);
+}
+
+.todo-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.todo-checkbox:checked {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.todo-checkbox:checked::after {
+  content: "X";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--bg-color);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.todo-text {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: var(--fg-color);
+  font-family: "VT323";
+}
+
+.todo-text:focus {
+  border-bottom: 2px dashed var(--accent-color);
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.todo-btn {
+  background: none;
+  border: none;
+  color: var(--fg-color);
+  font-family: "VT323";
+  cursor: pointer;
+  font-size: 1rem;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.todo-item:hover .todo-btn {
+  opacity: 1;
+}
+
+.todo-btn:hover {
+  color: var(--accent-color);
+}
+
+.todo-btn.del:hover {
+  color: #e74c3c;
+}
+
 .add-panel {
   background: var(--card-bg);
   border: 2px dashed var(--border-color);
@@ -165,7 +274,7 @@ header {
   flex-wrap: wrap;
 }
 
-input {
+input:not([type="checkbox"]) {
   background: var(--bg-color);
   border: 2px solid var(--border-color);
   color: var(--fg-color);
