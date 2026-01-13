@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startpage</title>
+    <style>
+      :root {
+        --bg-color: #1a1b26;
+        --fg-color: #a9b1d6;
+        --accent-color: #7aa2f7;
+        --search-bg: #24283b;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #clock {
+        font-size: 5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      #date {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.8;
+      }
+      .search-container {
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 3rem;
+      }
+      #search-form {
+        display: flex;
+      }
+      #search-input {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        background-color: var(--search-bg);
+        color: var(--fg-color);
+        font-size: 1.1rem;
+        outline: none;
+        transition: box-shadow 0.3s ease;
+      }
+      #search-input:focus {
+        box-shadow: 0 0 10px var(--accent-color);
+      }
+      .links-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .link-item {
+        text-decoration: none;
+        color: var(--fg-color);
+        background-color: var(--search-bg);
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        text-align: center;
+        transition:
+          transform 0.2s,
+          background-color 0.2s;
+      }
+      .link-item:hover {
+        transform: translateY(-5px);
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock">00:00:00</div>
+    <div id="date">Monday, January 1</div>
+
+    <div class="search-container">
+      <form
+        id="search-form"
+        action="https://www.google.com/search"
+        method="get"
+      >
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="Search Google..."
+          autofocus
+          autocomplete="off"
+        />
+      </form>
+    </div>
+
+    <div class="links-container">
+      <a href="https://github.com" class="link-item">GitHub</a>
+      <a href="https://youtube.com" class="link-item">YouTube</a>
+      <a href="https://reddit.com" class="link-item">Reddit</a>
+    </div>
+
+    <script>
+      function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, "0");
+        const m = String(now.getMinutes()).padStart(2, "0");
+        const s = String(now.getSeconds()).padStart(2, "0");
+        document.getElementById("clock").textContent = h + ":" + m + ":" + s;
+
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        document.getElementById("date").textContent = now.toLocaleDateString(
+          undefined,
+          options,
+        );
+      }
+
+      setInterval(updateClock, 1000);
+      updateClock();
+    </script>
+  </body>
+</html>
