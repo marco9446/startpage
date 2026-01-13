@@ -275,15 +275,9 @@
 
       function init() {
         const saved = localStorage.getItem(STORAGE_KEY);
+        bookmarks = [];
         if (saved) {
           bookmarks = JSON.parse(saved);
-        } else {
-          bookmarks = [
-            { name: "GITHUB", url: "https://github.com" },
-            { name: "YOUTUBE", url: "https://youtube.com" },
-            { name: "REDDIT", url: "https://reddit.com" },
-          ];
-          save();
         }
         render();
       }
