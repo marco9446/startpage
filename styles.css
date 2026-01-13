@@ -90,16 +90,16 @@ header {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
 }
 
 .bookmark-item {
   position: relative;
   background: var(--card-bg);
   border: 2px solid var(--border-color);
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   text-decoration: none;
   color: var(--fg-color);
   text-align: center;
@@ -108,7 +108,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80px;
+  min-height: 60px;
 }
 
 .bookmark-item:hover {
@@ -155,23 +155,23 @@ header {
 .todo-section {
   background: var(--card-bg);
   border: 2px solid var(--border-color);
-  padding: 1.5rem;
-  margin-bottom: 4rem;
+  padding: 1rem;
+  margin-bottom: 3rem;
   box-shadow: var(--shadow);
 }
 
 .todo-list {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .todo-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 0.8rem;
+  gap: 0.8rem;
+  padding: 0.5rem 0.8rem;
   border-left: 4px solid var(--accent-color);
   background: var(--bg-color);
 }
@@ -215,13 +215,14 @@ header {
 
 .todo-text {
   flex-grow: 1;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   outline: none;
   border: none;
   background: transparent;
   color: var(--fg-color);
   font-family: "VT323";
+  letter-spacing: 0.5px;
 }
 
 .todo-text:focus {
