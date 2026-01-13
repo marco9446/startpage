@@ -1,71 +1,84 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>STARTPAGE</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <div id="clock">00:00:00</div>
-      <div id="date">...</div>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>STARTPAGE</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <div id="clock">00:00:00</div>
+            <div id="date">...</div>
+        </header>
 
-    <main class="container">
-      <div class="section-label">ACCESS_LIST</div>
-      <div id="bookmarks-grid" class="grid">
-        <!-- Bookmarks injected by script.js -->
-      </div>
+        <main class="container">
+            <div class="search-section">
+                <div class="search-container">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="SEARCH_OR_URL"
+                        autocomplete="off"
+                        spellcheck="false"
+                    />
+                    <div id="search-suggestions" class="suggestions-list"></div>
+                </div>
+            </div>
 
-      <div class="section-label">TASK_LIST</div>
-      <div class="todo-section">
-        <form id="todo-form" class="form-row">
-          <input
-            type="text"
-            id="todo-input"
-            placeholder="NEW_TASK"
-            required
-            autocomplete="off"
-          />
-          <button type="submit" class="pixel-btn">ADD</button>
-        </form>
-        <div id="todo-list" class="todo-list">
-          <!-- Todos injected by script.js -->
-        </div>
-      </div>
+            <div class="section-label">BOOKMARKS</div>
+            <div id="bookmarks-grid" class="grid">
+                <!-- Bookmarks injected by script.js -->
+            </div>
 
-      <div class="section-label">APPEND_NEW</div>
-      <div class="add-panel">
-        <form id="add-form" class="form-row">
-          <input
-            type="text"
-            id="name-input"
-            placeholder="LABEL"
-            required
-            maxlength="12"
-            autocomplete="off"
-          />
-          <input
-            type="url"
-            id="url-input"
-            placeholder="URL (HTTPS://...)"
-            required
-            autocomplete="off"
-          />
-          <button type="submit" class="pixel-btn">EXECUTE</button>
-        </form>
-      </div>
-    </main>
+            <div class="section-label">TASK_LIST</div>
+            <div class="todo-section">
+                <form id="todo-form" class="form-row">
+                    <input
+                        type="text"
+                        id="todo-input"
+                        placeholder="NEW_TASK"
+                        required
+                        autocomplete="off"
+                    />
+                    <button type="submit" class="pixel-btn">ADD</button>
+                </form>
+                <div id="todo-list" class="todo-list">
+                    <!-- Todos injected by script.js -->
+                </div>
+            </div>
 
-    <footer class="footer-note">[ KEYBOARD_SHORTCUTS_ACTIVE ]</footer>
+            <div class="section-label">NEW_BOOKMARK</div>
+            <div class="add-panel">
+                <form id="add-form" class="form-row">
+                    <input
+                        type="text"
+                        id="name-input"
+                        placeholder="LABEL"
+                        required
+                        maxlength="12"
+                        autocomplete="off"
+                    />
+                    <input
+                        type="url"
+                        id="url-input"
+                        placeholder="URL (HTTPS://...)"
+                        required
+                        autocomplete="off"
+                    />
+                    <button type="submit" class="pixel-btn">EXECUTE</button>
+                </form>
+            </div>
+        </main>
 
-    <script src="script.js" defer></script>
-  </body>
+        <footer class="footer-note">[ KEYBOARD_SHORTCUTS_ACTIVE ]</footer>
+
+        <script src="script.js" defer></script>
+    </body>
 </html>
