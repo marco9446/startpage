@@ -6,99 +6,91 @@
     <title>Startpage</title>
     <style>
       :root {
-        --bg-color: #1a1b26;
-        --fg-color: #a9b1d6;
-        --accent-color: #7aa2f7;
-        --search-bg: #24283b;
+        /* Light theme defaults */
+        --bg-color: #f0f2f5;
+        --fg-color: #1c1e21;
+        --accent-color: #007bff;
+        --card-bg: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #1a1b26;
+          --fg-color: #a9b1d6;
+          --accent-color: #7aa2f7;
+          --card-bg: #24283b;
+          --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+      }
+
       body {
         margin: 0;
         padding: 0;
         background-color: var(--bg-color);
         color: var(--fg-color);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
         overflow: hidden;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
       }
+
       #clock {
-        font-size: 5rem;
-        font-weight: bold;
+        font-size: 6rem;
+        font-weight: 700;
         margin-bottom: 0.5rem;
+        letter-spacing: -2px;
       }
+
       #date {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        opacity: 0.8;
+        font-size: 1.75rem;
+        margin-bottom: 4rem;
+        opacity: 0.7;
+        font-weight: 300;
       }
-      .search-container {
-        width: 100%;
-        max-width: 600px;
-        margin-bottom: 3rem;
-      }
-      #search-form {
-        display: flex;
-      }
-      #search-input {
-        width: 100%;
-        padding: 1rem 1.5rem;
-        border: none;
-        border-radius: 25px;
-        background-color: var(--search-bg);
-        color: var(--fg-color);
-        font-size: 1.1rem;
-        outline: none;
-        transition: box-shadow 0.3s ease;
-      }
-      #search-input:focus {
-        box-shadow: 0 0 10px var(--accent-color);
-      }
+
       .links-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+        gap: 2rem;
       }
+
       .link-item {
         text-decoration: none;
         color: var(--fg-color);
-        background-color: var(--search-bg);
-        padding: 1rem 2rem;
-        border-radius: 8px;
+        background-color: var(--card-bg);
+        padding: 1.5rem 2.5rem;
+        border-radius: 12px;
         text-align: center;
+        box-shadow: var(--shadow);
+        font-weight: 500;
+        font-size: 1.1rem;
         transition:
           transform 0.2s,
-          background-color 0.2s;
+          background-color 0.2s,
+          color 0.2s;
       }
+
       .link-item:hover {
-        transform: translateY(-5px);
+        transform: translateY(-8px);
         background-color: var(--accent-color);
-        color: var(--bg-color);
+        color: white;
       }
     </style>
   </head>
   <body>
-    <div id="clock">00:00:00</div>
-    <div id="date">Monday, January 1</div>
-
-    <div class="search-container">
-      <form
-        id="search-form"
-        action="https://www.google.com/search"
-        method="get"
-      >
-        <input
-          type="text"
-          id="search-input"
-          name="q"
-          placeholder="Search Google..."
-          autofocus
-          autocomplete="off"
-        />
-      </form>
-    </div>
+    <div id="clock">00:00</div>
+    <div id="date">...</div>
 
     <div class="links-container">
       <a href="https://github.com" class="link-item">GitHub</a>
@@ -112,7 +104,7 @@
         const h = String(now.getHours()).padStart(2, "0");
         const m = String(now.getMinutes()).padStart(2, "0");
         const s = String(now.getSeconds()).padStart(2, "0");
-        document.getElementById("clock").textContent = h + ":" + m + ":" + s;
+        document.getElementById("clock").textContent = `${h}:${m}:${s}`;
 
         const options = {
           weekday: "long",
