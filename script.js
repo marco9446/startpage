@@ -229,6 +229,7 @@ function handleSearch(e) {
     }
   } else if (e.key === "Escape") {
     searchSuggestions.classList.remove("active");
+    searchInput.value = "";
     searchInput.blur();
   }
 }
@@ -255,7 +256,11 @@ if (searchInput) {
 window.addEventListener("keydown", (e) => {
   if (e.target.tagName === "INPUT") {
     if (e.key === "Escape") {
-      searchInput.blur();
+      if (e.target === searchInput) {
+        searchInput.value = "";
+        searchSuggestions.classList.remove("active");
+      }
+      e.target.blur();
     }
     return;
   }
