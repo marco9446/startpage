@@ -228,8 +228,6 @@ function handleSearch(e) {
       updateSelectedSuggestion(suggestions);
     }
   } else if (e.key === "Escape") {
-    e.preventDefault();
-    e.stopPropagation();
     searchSuggestions.classList.remove("active");
     searchInput.value = "";
     searchInput.blur();
@@ -255,30 +253,24 @@ if (searchInput) {
 }
 
 // Keyboard Listeners
-window.addEventListener(
-  "keydown",
-  (e) => {
-    if (e.target.tagName === "INPUT") {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.target === searchInput) {
-          searchInput.value = "";
-          searchSuggestions.classList.remove("active");
-        }
-        e.target.blur();
+window.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "INPUT") {
+    if (e.key === "Escape") {
+      if (e.target === searchInput) {
+        searchInput.value = "";
+        searchSuggestions.classList.remove("active");
       }
-      return;
+      e.target.blur();
     }
+    return;
+  }
 
-    // Focus search bar only on '/'
-    if (e.key === "/") {
-      e.preventDefault();
-      searchInput.focus();
-    }
-  },
-  { capture: true },
-);
+  // Focus search bar only on '/'
+  if (e.key === "/") {
+    e.preventDefault();
+    searchInput.focus();
+  }
+});
 
 function updateClock() {
   const clockEl = document.getElementById("clock");
