@@ -91,7 +91,7 @@ window.toggleTodo = function (index) {
 };
 
 window.updateTodo = function (index, newText) {
-  todos[index].text = newText.toUpperCase();
+  todos[index].text = newText;
   saveTodos();
   renderTodos();
 };
@@ -127,7 +127,7 @@ if (todoForm) {
     const todoInput = document.getElementById("todo-input");
     if (todoInput && todoInput.value.trim()) {
       todos.push({
-        text: todoInput.value.trim().toUpperCase(),
+        text: todoInput.value.trim(),
         completed: false,
       });
       saveTodos();

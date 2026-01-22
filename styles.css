@@ -48,13 +48,13 @@ header {
 }
 
 #clock {
-    font-size: 5rem;
+    font-size: 4rem;
     line-height: 1;
     margin-bottom: 0.5rem;
 }
 
 #date {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     opacity: 0.6;
     text-transform: uppercase;
 }
@@ -75,7 +75,7 @@ header {
 
 #search-input {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1rem;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -129,7 +129,7 @@ header {
 }
 
 .suggestion-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
 }
 
@@ -199,7 +199,7 @@ header {
 }
 
 .bm-name {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -285,8 +285,7 @@ header {
 
 .todo-text {
     flex-grow: 1;
-    font-size: 1.4rem;
-    text-transform: uppercase;
+    font-size: 1.1rem;
     outline: none;
     border: none;
     background: transparent;
@@ -350,7 +349,7 @@ input:not([type="checkbox"]) {
     border: 2px solid var(--border-color);
     color: var(--fg-color);
     font-family: var(--font-family);
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
     flex-grow: 1;
     outline: none;
@@ -365,7 +364,7 @@ button.pixel-btn {
     color: var(--bg-color);
     border: none;
     font-family: var(--font-family);
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 0.5rem 1.5rem;
     cursor: pointer;
     box-shadow: 3px 3px 0px var(--border-color);
@@ -385,7 +384,7 @@ button.pixel-btn:active {
 
 @media (max-width: 600px) {
     #clock {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
     }
     .grid {
         grid-template-columns: 1fr 1fr;
