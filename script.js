@@ -2,9 +2,6 @@ const STORAGE_KEY = "subtle_8bit_bookmarks";
 const TODO_STORAGE_KEY = "subtle_8bit_todos";
 // Default search engine (Startpage). Change to your preference.
 const SEARCH_ENGINE = "https://www.startpage.com/do/search?query=";
-// Priority: Home row, then top, then bottom
-const SHORTCUT_KEYS = "fjdksalghrueiwoqtyvbnmcz".split("");
-
 const bookmarksGrid = document.getElementById("bookmarks-grid");
 const searchInput = document.getElementById("search-input");
 const searchSuggestions = document.getElementById("search-suggestions");
@@ -50,12 +47,10 @@ function render() {
   if (!bookmarksGrid) return;
   bookmarksGrid.innerHTML = "";
   bookmarks.forEach((bm, index) => {
-    const key = SHORTCUT_KEYS[index] || "";
     const item = document.createElement("a");
     item.href = bm.url;
     item.className = "bookmark-item";
     item.innerHTML = `
-      ${key ? `<span class="shortcut-hint">${key.toUpperCase()}</span>` : ""}
       <span class="bm-name">${bm.name}</span>
       <button class="delete-btn" onclick="deleteBookmark(event, ${index})">[DEL]</button>
     `;
@@ -258,23 +253,17 @@ if (searchInput) {
 
 // Keyboard Listeners
 window.addEventListener("keydown", (e) => {
-  if (e.target.tagName === "INPUT") return;
-
-  // Focus search bar on '/' or just start typing
-  if (
-    e.key === "/" ||
-    (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey)
-  ) {
-    if (e.key === "/") e.preventDefault();
-    searchInput.focus();
+  if (e.target.tagName === "INPUT") {
+    if (e.key === "Escape") {
+      searchInput.blur();
+    }
     return;
   }
 
-  const pressedKey = e.key.toLowerCase();
-  const index = SHORTCUT_KEYS.indexOf(pressedKey);
-
-  if (index !== -1 && index < bookmarks.length) {
-    window.location.href = bookmarks[index].url;
+  // Focus search bar only on '/'
+  if (e.key === "/") {
+    e.preventDefault();
+    searchInput.focus();
   }
 });
 
